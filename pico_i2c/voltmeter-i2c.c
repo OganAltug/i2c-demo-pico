@@ -80,6 +80,7 @@ int main() {
         //uart_puts(UART_ID, message);
         sprintf (message, "Value %d\r\n", rxdata[0]+(rxdata[1]<<8));
         uart_puts(UART_ID, message);
+        printf("Hello world");
         
         // Respond with ADC value (in milivolts)
         uint16_t adc_value=adc_read();
@@ -88,6 +89,7 @@ int main() {
         txdata[0] = value & 0xFF;
         txdata[1] = value >> 8;
         sprintf (message, "Tx: %d %d - %d\r\n", txdata[0], txdata[1], value);
+        printf("Hello mom");
         uart_puts(UART_ID, message);
         // Sends data in mv (as int)
         i2c_write_raw_blocking(i2c1, txdata, 2);
